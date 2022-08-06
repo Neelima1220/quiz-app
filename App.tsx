@@ -1,12 +1,11 @@
-import * as React from 'react';
+import React, { createContext, useState } from 'react';
 import './style.css';
+import Hello from './hello';
+import { useGlobalContext } from './context';
 
 export default function App() {
-  const [sel, setSel] = React.useState('na');
-  const handleChange = (e) => {
-    console.log(e.target.value);
-    setSel(e.target.value);
-  };
+  const { sel, setSel, handleChange } = useGlobalContext();
+
   return (
     <div>
       <select onChange={handleChange} value={sel}>
@@ -14,7 +13,7 @@ export default function App() {
         <option value="gi">gi</option>
         <option value="reddy">reddy</option>
       </select>
-      {sel}
+      <Hello />
     </div>
   );
 }
